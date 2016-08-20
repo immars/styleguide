@@ -3665,8 +3665,10 @@ def CheckBraces(filename, clean_lines, linenum, error):
     if (not Search(r'[,;:}{(]\s*$', prevline) and
         not Match(r'\s*#', prevline) and
         not (GetLineWidth(prevline) > _line_length - 2 and '[]' in prevline)):
-      error(filename, linenum, 'whitespace/braces', 4,
-            '{ should almost always be at the end of the previous line')
+        pass
+    #  horizon: DO NOT check '{' at start of line
+    #  error(filename, linenum, 'whitespace/braces', 4,
+    #        '{ should almost always be at the end of the previous line')
 
   # An else clause should be on the same line as the preceding closing brace.
   if Match(r'\s*else\b\s*(?:if\b|\{|$)', line):
